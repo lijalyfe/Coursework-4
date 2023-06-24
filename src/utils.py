@@ -63,3 +63,39 @@ def show_filtered_vacancies(vacancies, keyword=None, salary_from=None, salary_to
         print(f"{i + 1}. {vacancy.title} {vacancy.salary} {vacancy.link}")
 
 
+def edit_vacancies(file, action, vacancy=None):
+    """Функция для добавления, редактирования и удаления вакансий в файле"""
+    # Читаем текущие вакансии из файла
+    vacancies = file.read()
+    # Обрабатываем команду пользователя
+    if action == "add":
+        # Добавляем новую вакансию
+        if vacancy.validate():
+            vacancies.append(vacancy)
+            file.write([v.__dict__ for v in vacancies])
+            print("Вакансия успешно добавлена!")
+        else:
+            print("Ошибка! Проверьте правильность введенных данных.")
+    elif action == "edit":
+        # Изменяем существующую вакансию
+        if vacancy.validate():
+            for i, v in enumerate(vacancies):
+                if v == vacancy:
+                    vacancies[i] = vacancy
+                    file.write([v.__dict__ for v in vacancies])
+                    print("Изменения успешно сохранены!")
+                    break
+            else:
+                print("Ошибка! Не найдено вакансии, которую нужно изменить.")
+        else:
+            print("Ошибка! Проверьте правильность введенных данных.")
+    elif action == "remove":
+        # Удаляем существующую вакансию
+        for i, v in enumerate(vacancies):
+            if v == vacancy:
+                vacancies.pop(i)
+                file.write([v.__dict__ for v in vacancies])
+                print("Вакансия успешно удалена!")
+                break
+        else:
+            print("Ошибка! Не найдено вакансии, которую нужно удалить.")
