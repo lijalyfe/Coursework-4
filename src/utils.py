@@ -23,3 +23,14 @@ def input_query():
     # Просим пользователя ввести поисковой запрос
     query = input("Введите поисковой запрос: ")
     return query
+
+
+def show_top_vacancies(vacancies, n=10):
+    """Функция для отображения топ N вакансий"""
+    # Сортируем вакансии по зарплате
+    sorted_vacancies = sorted(vacancies, reverse=True)
+    # Отображаем top N вакансий
+    print(f"Топ {n} вакансий:")
+    for i, vacancy in enumerate(sorted_vacancies[:n]):
+        print(f"{i + 1}. {vacancy.title} {vacancy.salary} {vacancy.link}")
+
