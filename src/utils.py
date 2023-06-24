@@ -18,3 +18,8 @@ def select_platform():
     return selected_platforms
 
 
+def input_query():
+    """Функция для ввода поискового запроса"""
+    # Просим пользователя ввести поисковой запрос
+    query = input("Введите поисковой запрос: ")
+    return query
