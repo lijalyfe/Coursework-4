@@ -44,3 +44,22 @@ def show_sorted_vacancies(vacancies):
     for i, vacancy in enumerate(sorted_vacancies):
         print(f"{i + 1}. {vacancy.title} {vacancy.salary} {vacancy.link}")
 
+
+def show_filtered_vacancies(vacancies, keyword=None, salary_from=None, salary_to=None):
+    """Функция для отображения вакансий по заданным критериям"""
+    # Фильтруем вакансии по ключевому слову, если оно задано
+    if keyword is not None:
+        filtered_vacancies = [v for v in vacancies if keyword.lower() in v.description.lower()]
+    else:
+        filtered_vacancies = vacancies
+    # Фильтруем вакансии по зарплате, если значения указаны
+    if salary_from is not None:
+        filtered_vacancies = [v for v in filtered_vacancies if v.salary >= salary_from]
+    if salary_to is not None:
+        filtered_vacancies = [v for v in filtered_vacancies if v.salary <= salary_to]
+    # Отображаем отфильтрованный список вакансий
+    print("Список вакансий:")
+    for i, vacancy in enumerate(filtered_vacancies):
+        print(f"{i + 1}. {vacancy.title} {vacancy.salary} {vacancy.link}")
+
+
