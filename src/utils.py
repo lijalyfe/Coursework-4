@@ -34,3 +34,13 @@ def show_top_vacancies(vacancies, n=10):
     for i, vacancy in enumerate(sorted_vacancies[:n]):
         print(f"{i + 1}. {vacancy.title} {vacancy.salary} {vacancy.link}")
 
+
+def show_sorted_vacancies(vacancies):
+    """Функция для отображения вакансий в отсортированном виде"""
+    # Сортируем вакансии по зарплате
+    sorted_vacancies = sorted(vacancies, reverse=True)
+    # Отображаем отсортированный список вакансий
+    print("Список вакансий:")
+    for i, vacancy in enumerate(sorted_vacancies):
+        print(f"{i + 1}. {vacancy.title} {vacancy.salary} {vacancy.link}")
+
