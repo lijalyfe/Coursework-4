@@ -1,4 +1,4 @@
-from src.json_file import JSONFile
+from src.JSONSaver import JSONFile
 from src.vacancy import Vacancy
 from src.utils import select_platform, input_query, show_top_vacancies, show_sorted_vacancies, show_filtered_vacancies, edit_vacancies
 
